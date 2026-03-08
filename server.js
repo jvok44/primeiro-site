@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/teste')
+mongoose.connect("mongodb://jvok44:mva020406@ac-pcgkcbz-shard-00-00.hs2bjrx.mongodb.net:27017,ac-pcgkcbz-shard-00-01.hs2bjrx.mongodb.net:27017,ac-pcgkcbz-shard-00-02.hs2bjrx.mongodb.net:27017/?ssl=true&replicaSet=atlas-kc2qni-shard-0&authSource=admin&appName=Cluster0")
     .then(() => console.log('Conectado ao MongoDB'))
     .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
 
