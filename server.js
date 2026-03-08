@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.render('register');
+    res.render('/register');
 });
 
 
@@ -20,11 +20,11 @@ const User = require('./models/User');
 
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/", async (req, res) => {
+app.post("/register", async (req, res) => {
     const { username, email, password } = req.body;
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
-        return res.redirect("/");
+        return res.redirect("/register");
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
@@ -36,10 +36,10 @@ app.post("/", async (req, res) => {
     res.redirect("/login");
 });
 
-app.get('/', (req, res) => {
-    res.render('register');
+app.get('/register', (req, res) => {
+    res.render('/register');
 });
-app.post('/', async (req, res) => {
+app.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
     const newUser = new User({ 
         username,
@@ -51,7 +51,7 @@ app.post('/', async (req, res) => {
     });
 
 app.get('/login', (req, res) => {
-    res.render('login')
+    res.render('/login')
 });
 app.post('/login', async (req, res) => {
 
