@@ -47,7 +47,7 @@ app.post('/register', async (req, res) => {
         password
     });
     await newUser.save();
-    res.redirect("/index");
+    res.redirect("/login");
     });
 
 app.get('/login', (req, res) => {
@@ -66,7 +66,7 @@ app.post('/login', async (req, res) => {
     if (!match) {
         return res.redirect("/login");
     }
-    res.redirect("/");
+    res.redirect("/index");
 });
 
 app.use((req, res) => {
