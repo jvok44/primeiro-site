@@ -20,11 +20,11 @@ const User = require('./models/User');
 
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/register", async (req, res) => {
+app.post("/", async (req, res) => {
     const { username, email, password } = req.body;
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
-        return res.redirect("/register");
+        return res.redirect("/");
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
@@ -36,10 +36,10 @@ app.post("/register", async (req, res) => {
     res.redirect("/login");
 });
 
-app.get('/register', (req, res) => {
+app.get('/', (req, res) => {
     res.render('register');
 });
-app.post('/register', async (req, res) => {
+app.post('/', async (req, res) => {
     const { username, email, password } = req.body;
     const newUser = new User({ 
         username,
