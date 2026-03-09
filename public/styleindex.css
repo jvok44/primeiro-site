@@ -1,6 +1,6 @@
 body {
     overflow: hidden;
-  margin: 0;
+  margin: 3px;
   height: 100vh;
   background: linear-gradient(to right, #bb46ff, #941ed8, #8400d1);
   background-size: 800% 800%;
